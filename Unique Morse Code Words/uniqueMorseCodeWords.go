@@ -5,7 +5,6 @@ func uniqueMorseRepresentations(words []string) int {
     
     mors := []string{".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."}
     
-    
     morsMap := make(map[string] int)
     for _, word := range words {
         
@@ -17,6 +16,5 @@ func uniqueMorseRepresentations(words []string) int {
         morsMap[buffer] += 1
     }
     
-    return len(morsMap)
-    
+    return len(morsMap)   
 }
