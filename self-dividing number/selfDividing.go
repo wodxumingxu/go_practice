@@ -1,23 +1,22 @@
-class Solution {
-public:
-    vector<int> selfDividingNumbers(int left, int right) {
-        vector<int> ret;
-        for(int i = left; i <= right; ++i){
-            
-            int next = i / 10;
-            int divided = i % 10;
-            bool qualify = (divided == 0) ? false : (0 == (i % divided));
-            
-            while((0 != divided) && (0 != next) && qualify){
-                divided = next % 10;
-                qualify = qualify = (divided == 0) ? false : (0 == (i % divided));
-                next = next / 10;
-            }
-            
-            if(qualify){
-                ret.push_back(i);
-            }
+import "strconv"
+
+func isDividingNumber(n int) bool {
+    str := strconv.Itoa(n)
+    for _, ch := range str  {
+        num := int(ch - '0')
+        if 0 == num || n % num > 0  {
+            return false   
         }
-        return ret;
     }
-};
+    return true
+}
+
+func selfDividingNumbers(left int, right int) []int {
+    var ret []int 
+    for i := left; i <= right; i = i + 1 {
+        if isDividingNumber(i) {
+            ret = append(ret, i)
+        }
+    }
+    return ret
+}
